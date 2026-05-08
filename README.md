@@ -251,6 +251,41 @@ Customize `config/scoring_rules.yml` for:
 
 Customize `src/founder_customer_onboarding/reporting.py` if you want different output formats.
 
+## Standalone or integrated
+
+Standalone:
+Use this repo by itself if you only need a post-sale onboarding control tower for activation risk, SLA issues, owner gaps, and founder attention accounts. Fork it, replace the sample input, run the workflow or copy the templates, and use the main output in your next founder review.
+
+Integrated:
+Use this repo with the Founder OS ecosystem if you want to connect it to adjacent operating workflows.
+
+- Use after close-won.
+- Feed onboarding risk into [founder-weekly-operating-review-agent](https://github.com/shubham1502-hue/founder-weekly-operating-review-agent).
+- Feed activation or retention risks into [board-pack-investor-update-agent](https://github.com/shubham1502-hue/board-pack-investor-update-agent) when needed.
+- Use [founder-ai-workflow-roi-os](https://github.com/shubham1502-hue/founder-ai-workflow-roi-os) if onboarding workflows become repetitive or ops-heavy.
+
+## Lifecycle handoff
+
+Before:
+
+- [founder-led-sales-call-os](https://github.com/shubham1502-hue/founder-led-sales-call-os) for sales call context and deal risk.
+- [founder-os-revenue-engine](https://github.com/shubham1502-hue/founder-os-revenue-engine) for close-won and funnel leakage context.
+- [revops-infrastructure-playbook](https://github.com/shubham1502-hue/revops-infrastructure-playbook) for CRM handoffs and owner fields.
+
+This repo produces:
+
+- Onboarding health scorecard
+- Founder attention queue
+- SLA risk list
+- Activation matrix
+- Weekly onboarding memo
+
+After:
+
+- [founder-weekly-operating-review-agent](https://github.com/shubham1502-hue/founder-weekly-operating-review-agent) for weekly leadership review.
+- [board-pack-investor-update-agent](https://github.com/shubham1502-hue/board-pack-investor-update-agent) when onboarding or activation risk needs investor narrative.
+- [founder-ai-workflow-roi-os](https://github.com/shubham1502-hue/founder-ai-workflow-roi-os) when onboarding work should be automated, piloted, hired for, outsourced, or kept manual.
+
 ## Why this matters
 
 This is not a customer success dashboard. It is a founder operating system for making sure closed-won customers become activated customers.
