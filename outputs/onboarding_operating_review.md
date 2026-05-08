@@ -1,5 +1,9 @@
 # Onboarding Operating Review
 
+## Data note
+
+The bundled sample dataset and generated sample outputs are synthetic and fictionalized. Replace data/sample_onboarding_accounts.csv with your own private tracker before using this for company decisions.
+
 ## Weekly onboarding review agenda
 
 1. Review activation progress by stage.

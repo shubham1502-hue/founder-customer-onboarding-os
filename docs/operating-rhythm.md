@@ -20,6 +20,8 @@ For each account, confirm:
 - Expected leverage
 - Escalation note
 
+If a score or recommendation is unclear, open `outputs/account_score_explanations.csv` and review the score drivers before changing the owner action.
+
 ## Wednesday
 
 Open `outputs/onboarding_sla_risks.csv`.
@@ -61,4 +63,3 @@ Pick one or two process improvements for the next week. Avoid trying to fix ever
 5. Which activation deadlines are missed or at risk?
 6. Which customer success workflows need better ownership?
 7. What should be updated in CRM or the customer success tracker?
-

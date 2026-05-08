@@ -154,6 +154,76 @@ PROCESS_FIXES = {
 }
 
 
+def score_driver_summary(row: pd.Series) -> str:
+    """Summarize why scores and attention category were assigned."""
+    drivers: list[str] = []
+    if row.get("activation_risk_level") in {"High", "Critical"}:
+        drivers.append(f"{row.get('activation_risk_level')} activation risk")
+    if row.get("health_category") in {"At risk", "Critical"}:
+        drivers.append(f"{row.get('health_category')} customer health")
+    if clean_text(row.get("blocker")) and normalize_text(row.get("blocker")) not in {
+        "none",
+        "no blocker",
+    }:
+        drivers.append(clean_text(row.get("blocker")))
+    if clean_text(row.get("owner_coverage_status")) not in {"", "Covered"}:
+        drivers.append(clean_text(row.get("owner_coverage_status")))
+    if normalize_text(row.get("usage_signal")) in {"low", "none", "declining"}:
+        drivers.append(f"Usage signal: {clean_text(row.get('usage_signal'))}")
+    if normalize_text(row.get("payment_status")) in {"overdue", "unpaid", "payment failed"}:
+        drivers.append(f"Payment status: {clean_text(row.get('payment_status'))}")
+    training_status = normalize_text(row.get("training_completed"))
+    if training_status == "no":
+        drivers.append("Training incomplete")
+    elif training_status == "partial":
+        drivers.append("Training partially complete")
+    if normalize_text(row.get("renewal_risk_signal")) in {
+        "risk",
+        "churn risk",
+        "executive concern",
+        "budget concern",
+    }:
+        drivers.append(f"Renewal risk: {clean_text(row.get('renewal_risk_signal'))}")
+    if not drivers:
+        drivers.append("Healthy onboarding signals")
+    return "; ".join(drivers[:5])
+
+
+def score_interpretation(row: pd.Series) -> str:
+    """Explain how a founder should read the scores."""
+    return (
+        f"Health {row.get('customer_health_score')} means {row.get('health_category')}. "
+        f"Risk {row.get('onboarding_risk_score')} maps to {row.get('activation_risk_level')} activation risk. "
+        f"Founder attention {row.get('founder_attention_score')} maps to {row.get('founder_attention_category')}."
+    )
+
+
+def build_score_explanations(scored_accounts: pd.DataFrame) -> pd.DataFrame:
+    """Build account-level score explanations for founder trust."""
+    explanations = scored_accounts.copy()
+    explanations["score_driver_summary"] = explanations.apply(score_driver_summary, axis=1)
+    explanations["score_interpretation"] = explanations.apply(score_interpretation, axis=1)
+    return explanations[
+        [
+            "account_id",
+            "customer_name",
+            "contract_value",
+            "customer_health_score",
+            "health_category",
+            "onboarding_risk_score",
+            "activation_risk_level",
+            "founder_attention_score",
+            "founder_attention_category",
+            "score_driver_summary",
+            "score_interpretation",
+            "recommended_next_action",
+        ]
+    ].sort_values(
+        by=["founder_attention_score", "onboarding_risk_score", "contract_value"],
+        ascending=[False, False, False],
+    )
+
+
 def build_process_improvements(sla_risks: pd.DataFrame) -> pd.DataFrame:
     """Summarize recurring process issues from detected risks."""
     rows: list[dict[str, Any]] = []
@@ -233,12 +303,21 @@ def build_founder_memo(
     lines = [
         "# Founder Onboarding Memo",
         "",
+        "## Data note",
+        "",
+        company_config.get(
+            "data_context_note",
+            "Confirm the data source before making customer decisions.",
+        ),
+        "",
         "## Executive summary",
         "",
         f"{company_config['company_name']} has {total_accounts} onboarding accounts in this review. "
         f"{activated} are activated, {at_risk} are at risk or critical, and {founder_now} need founder intervention now.",
         "",
         "Read the founder attention queue first, then review SLA risks and process improvements.",
+        "",
+        "Scores are deterministic. They use `config/scoring_rules.yml`, visible account fields, and rule-based risk detection. Review `outputs/account_score_explanations.csv` when you want the reason behind a score.",
         "",
         "## Onboarding health snapshot",
         "",
@@ -336,6 +415,13 @@ def build_operating_review(
     lines = [
         "# Onboarding Operating Review",
         "",
+        "## Data note",
+        "",
+        company_config.get(
+            "data_context_note",
+            "Confirm the data source before making customer decisions.",
+        ),
+        "",
         "## Weekly onboarding review agenda",
         "",
         "1. Review activation progress by stage.",
@@ -420,6 +506,7 @@ def generate_outputs(
     founder_queue = build_founder_attention_queue(scored_accounts)
     sla_risks = detect_sla_risks(scored_accounts, company_config)
     activation_matrix = build_activation_matrix(scored_accounts)
+    score_explanations = build_score_explanations(scored_accounts)
     process_improvements = build_process_improvements(sla_risks)
 
     files = {
@@ -427,6 +514,7 @@ def generate_outputs(
         "founder_queue": output_path / "founder_attention_queue.csv",
         "sla_risks": output_path / "onboarding_sla_risks.csv",
         "activation_matrix": output_path / "customer_activation_matrix.csv",
+        "score_explanations": output_path / "account_score_explanations.csv",
         "process_improvements": output_path / "onboarding_process_improvements.csv",
         "founder_memo": output_path / "founder_onboarding_memo.md",
         "operating_review": output_path / "onboarding_operating_review.md",
@@ -436,6 +524,7 @@ def generate_outputs(
     founder_queue.to_csv(files["founder_queue"], index=False)
     sla_risks.to_csv(files["sla_risks"], index=False)
     activation_matrix.to_csv(files["activation_matrix"], index=False)
+    score_explanations.to_csv(files["score_explanations"], index=False)
     process_improvements.to_csv(files["process_improvements"], index=False)
     files["founder_memo"].write_text(
         build_founder_memo(
@@ -460,4 +549,3 @@ def generate_outputs(
         encoding="utf-8",
     )
     return files
-

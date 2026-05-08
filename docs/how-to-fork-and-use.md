@@ -65,9 +65,11 @@ Read these in order:
 2. `outputs/founder_attention_queue.csv`
 3. `outputs/onboarding_sla_risks.csv`
 4. `outputs/customer_activation_matrix.csv`
-5. `outputs/onboarding_process_improvements.csv`
+5. `outputs/account_score_explanations.csv`
+6. `outputs/onboarding_process_improvements.csv`
+
+If a score or recommendation looks surprising, open `outputs/account_score_explanations.csv` and then review `config/scoring_rules.yml`.
 
 ## 9. Use outputs in your operating rhythm
 
 Bring the founder memo and attention queue to your weekly customer onboarding review. Assign owners and due dates. Update your CRM, customer success tracker, Notion workspace, Airtable base, HubSpot, Pipedrive, Attio, Salesforce, Linear, ClickUp, or Google Sheet after the meeting.
-

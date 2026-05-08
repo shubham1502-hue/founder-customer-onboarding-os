@@ -6,5 +6,5 @@
 - Added synthetic onboarding account dataset.
 - Added configurable company profile and transparent scoring rules.
 - Added health scorecard, founder attention queue, SLA risks, activation matrix, process improvements, founder memo, and operating review outputs.
+- Added account-level score explanations for founder trust and auditability.
 - Added CLI, Makefile, tests, docs, prompt templates, and GitHub Actions CI.
-

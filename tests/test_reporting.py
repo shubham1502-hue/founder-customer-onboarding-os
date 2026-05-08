@@ -6,6 +6,7 @@ from founder_customer_onboarding.reporting import (
     build_activation_matrix,
     build_founder_memo,
     build_process_improvements,
+    generate_outputs,
 )
 from founder_customer_onboarding.actions import build_founder_attention_queue
 from founder_customer_onboarding.risk import detect_sla_risks
@@ -40,3 +41,19 @@ def test_memo_generation_contains_required_sections():
     assert "## Customers needing founder attention this week" in memo
     assert "## Recommended next 7-day actions" in memo
 
+
+def test_generate_outputs_writes_score_explanations(tmp_path):
+    company_config = load_company_config(ROOT / "config/company_profile.yml")
+    scoring_config = load_scoring_config(ROOT / "config/scoring_rules.yml")
+
+    files = generate_outputs(
+        ROOT / "data/sample_onboarding_accounts.csv",
+        company_config,
+        scoring_config,
+        tmp_path,
+    )
+
+    assert files["score_explanations"].exists()
+    text = files["score_explanations"].read_text(encoding="utf-8")
+    assert "score_driver_summary" in text
+    assert "recommended_next_action" in text

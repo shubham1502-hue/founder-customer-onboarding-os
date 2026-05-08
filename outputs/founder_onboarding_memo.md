@@ -1,10 +1,16 @@
 # Founder Onboarding Memo
 
+## Data note
+
+The bundled sample dataset and generated sample outputs are synthetic and fictionalized. Replace data/sample_onboarding_accounts.csv with your own private tracker before using this for company decisions.
+
 ## Executive summary
 
 Demo Startup Customer Onboarding OS has 22 onboarding accounts in this review. 3 are activated, 11 are at risk or critical, and 8 need founder intervention now.
 
 Read the founder attention queue first, then review SLA risks and process improvements.
+
+Scores are deterministic. They use `config/scoring_rules.yml`, visible account fields, and rule-based risk detection. Review `outputs/account_score_explanations.csv` when you want the reason behind a score.
 
 ## Onboarding health snapshot
 

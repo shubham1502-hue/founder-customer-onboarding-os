@@ -2,9 +2,22 @@
 
 Turn closed-won customers into activated customers with onboarding health, SLA risk, founder attention queues, and weekly operating reviews.
 
-This helps founders prevent closed-won customers from getting stuck after the sale. It shows which customers need founder attention, flags onboarding and activation risks, gives a weekly onboarding control tower, and turns post-sale mess into owner-backed actions.
+This helps founders prevent closed-won customers from getting stuck after the sale. Replace one CSV, edit one YAML file, run one command, and open one memo that tells you:
+
+- Which customers are stuck after closing
+- Which accounts need founder attention this week
+- Which handoffs, owners, blockers, payments, trainings, integrations, and migrations are creating activation risk
+- What action each owner should take next
 
 The base workflow is deterministic, offline-first, and does not require paid APIs or an LLM.
+
+Start here:
+
+```bash
+make install
+make run
+open outputs/founder_onboarding_memo.md
+```
 
 ## The founder problem
 
@@ -33,6 +46,7 @@ This repo turns post-sale chaos into a founder-ready onboarding control tower.
 - Activation bottleneck view
 - Owner gap view
 - High-value accounts at risk
+- Score explanations
 - Process improvement list
 - Founder onboarding memo
 
@@ -90,6 +104,7 @@ make run
 | 2 | config/company_profile.yml | Edit activation definition, stages, owners, risk thresholds |
 | 3 | make run | Generate scorecards, risks, queue, memo, and review |
 | 4 | outputs/founder_onboarding_memo.md | Read this first |
+| 5 | outputs/account_score_explanations.csv | Check why scores and recommendations were assigned |
 
 You can also run:
 
@@ -141,6 +156,8 @@ Non-technical path:
 
 The input is a CSV at `data/sample_onboarding_accounts.csv`. All sample rows are synthetic and fictionalized.
 
+The bundled sample data and generated sample outputs are synthetic. They are designed to show the workflow, not to claim production usage by any real company.
+
 Required columns:
 
 - `account_id`: Stable account identifier
@@ -183,9 +200,27 @@ Open `outputs/founder_onboarding_memo.md` first.
 - `outputs/founder_attention_queue.csv`: Ranked list of accounts needing founder, leadership, or owner follow-up.
 - `outputs/onboarding_sla_risks.csv`: Detected SLA, handoff, payment, owner, touchpoint, and blocker risks.
 - `outputs/customer_activation_matrix.csv`: Activation gaps and recommended activation moves by account.
+- `outputs/account_score_explanations.csv`: Account-level score drivers, score interpretation, and recommended next action.
 - `outputs/onboarding_process_improvements.csv`: Recurring process issues with suggested fixes, owner roles, and expected impact.
 - `outputs/founder_onboarding_memo.md`: Founder-ready weekly memo with summary, risks, bottlenecks, owner gaps, and next 7-day actions.
 - `outputs/onboarding_operating_review.md`: Weekly operating review agenda, metrics, accounts to discuss, decisions, owners, and CRM updates.
+
+## How to trust the scores
+
+The scoring is deterministic and explainable. There are no hidden models.
+
+- `customer_health_score` is a 0 to 100 positive score. Higher is better.
+- `onboarding_risk_score` is a 0 to 100 risk score. Higher means more activation risk.
+- `founder_attention_score` is a 0 to 100 priority score. Higher means the account deserves more senior review.
+- Score weights live in `config/scoring_rules.yml`.
+- Company thresholds live in `config/company_profile.yml`.
+- Score explanations are written to `outputs/account_score_explanations.csv`.
+
+Scores use visible account fields: activation status, days since close, activation deadline, customer sentiment, owner coverage, blockers, support tickets, usage signal, payment status, integration complexity, data migration complexity, training completion, renewal risk, and contract value.
+
+The founder attention queue is not a black box. It combines risk, contract value, health, blocker severity, owner clarity, sentiment, renewal risk, and deadline pressure. The queue also includes `risk_reason`, `founder_action`, `owner`, `due_timing`, `expected_leverage`, and `escalation_note`.
+
+See [docs/scoring-methodology.md](docs/scoring-methodology.md) for the full scoring explanation.
 
 ## Example founder workflow
 
@@ -245,4 +280,3 @@ MIT License. See [LICENSE](LICENSE).
 ## Built by
 
 Built by Shubham Singh, a founder-facing operator focused on RevOps, GTM systems, startup metrics, AI workflows, and operating systems for early-stage teams.
-
