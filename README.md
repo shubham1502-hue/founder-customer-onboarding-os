@@ -147,6 +147,7 @@ Non-technical path:
 - Use [founder-led-sales-call-os](https://github.com/shubham1502-hue/founder-led-sales-call-os) after sales calls to extract objections and deal rescue actions.
 - Use [founder-os-revenue-engine](https://github.com/shubham1502-hue/founder-os-revenue-engine) to diagnose funnel leakage.
 - Use `founder-customer-onboarding-os` after close-won to track activation and onboarding risk.
+- Use [founder-retention-expansion-os](https://github.com/shubham1502-hue/founder-retention-expansion-os) after activation to monitor customer health, renewal risk, expansion readiness, churn drivers, and proof opportunities.
 - Use [founder-weekly-operating-review-agent](https://github.com/shubham1502-hue/founder-weekly-operating-review-agent) to roll onboarding risks into the weekly operating review.
 - Use [board-pack-investor-update-agent](https://github.com/shubham1502-hue/board-pack-investor-update-agent) if onboarding, activation, or retention risk needs board or investor narrative.
 - Use [founder-ai-workflow-roi-os](https://github.com/shubham1502-hue/founder-ai-workflow-roi-os) if onboarding workflows should be automated, hired for, outsourced, or left manual.
@@ -222,6 +223,10 @@ The founder attention queue is not a black box. It combines risk, contract value
 
 See [docs/scoring-methodology.md](docs/scoring-methodology.md) for the full scoring explanation.
 
+## After activation
+
+Founder Customer Onboarding OS helps customers reach activation. After activation, use [Founder Retention Expansion OS](https://github.com/shubham1502-hue/founder-retention-expansion-os) to monitor customer health, renewal risk, expansion readiness, churn drivers, and proof opportunities.
+
 ## Example founder workflow
 
 - Monday: Review founder onboarding memo.
@@ -261,6 +266,7 @@ Use this repo with the Founder OS ecosystem if you want to connect it to adjacen
 
 - Use after close-won.
 - Feed onboarding risk into [founder-weekly-operating-review-agent](https://github.com/shubham1502-hue/founder-weekly-operating-review-agent).
+- Move activated accounts into [founder-retention-expansion-os](https://github.com/shubham1502-hue/founder-retention-expansion-os) for post-activation health, renewal, expansion, and proof tracking.
 - Feed activation or retention risks into [board-pack-investor-update-agent](https://github.com/shubham1502-hue/board-pack-investor-update-agent) when needed.
 - Use [founder-ai-workflow-roi-os](https://github.com/shubham1502-hue/founder-ai-workflow-roi-os) if onboarding workflows become repetitive or ops-heavy.
 
@@ -282,6 +288,7 @@ This repo produces:
 
 After:
 
+- [founder-retention-expansion-os](https://github.com/shubham1502-hue/founder-retention-expansion-os) after activation for retention risk, renewal risk, expansion readiness, churn drivers, and customer proof.
 - [founder-weekly-operating-review-agent](https://github.com/shubham1502-hue/founder-weekly-operating-review-agent) for weekly leadership review.
 - [board-pack-investor-update-agent](https://github.com/shubham1502-hue/board-pack-investor-update-agent) when onboarding or activation risk needs investor narrative.
 - [founder-ai-workflow-roi-os](https://github.com/shubham1502-hue/founder-ai-workflow-roi-os) when onboarding work should be automated, piloted, hired for, outsourced, or kept manual.
