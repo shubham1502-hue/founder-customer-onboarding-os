@@ -148,6 +148,7 @@ Non-technical path:
 - Use [founder-os-revenue-engine](https://github.com/shubham1502-hue/founder-os-revenue-engine) to diagnose funnel leakage.
 - Use `founder-customer-onboarding-os` after close-won to track activation and onboarding risk.
 - Use [founder-retention-expansion-os](https://github.com/shubham1502-hue/founder-retention-expansion-os) after activation to monitor customer health, renewal risk, expansion readiness, churn drivers, and proof opportunities.
+- Use [founder-product-feedback-roadmap-os](https://github.com/shubham1502-hue/founder-product-feedback-roadmap-os) when onboarding blockers, activation gaps, support issues, training gaps, or implementation friction should become roadmap decisions or non-product fixes.
 - Use [founder-weekly-operating-review-agent](https://github.com/shubham1502-hue/founder-weekly-operating-review-agent) to roll onboarding risks into the weekly operating review.
 - Use [board-pack-investor-update-agent](https://github.com/shubham1502-hue/board-pack-investor-update-agent) if onboarding, activation, or retention risk needs board or investor narrative.
 - Use [founder-ai-workflow-roi-os](https://github.com/shubham1502-hue/founder-ai-workflow-roi-os) if onboarding workflows should be automated, hired for, outsourced, or left manual.
@@ -227,6 +228,10 @@ See [docs/scoring-methodology.md](docs/scoring-methodology.md) for the full scor
 
 Founder Customer Onboarding OS helps customers reach activation. After activation, use [Founder Retention Expansion OS](https://github.com/shubham1502-hue/founder-retention-expansion-os) to monitor customer health, renewal risk, expansion readiness, churn drivers, and proof opportunities.
 
+## Product feedback handoff
+
+[Founder Customer Onboarding OS](https://github.com/shubham1502-hue/founder-customer-onboarding-os) surfaces onboarding blockers, activation gaps, support issues, training gaps, and implementation friction. [Founder Product Feedback Roadmap OS](https://github.com/shubham1502-hue/founder-product-feedback-roadmap-os) can turn those signals into roadmap decisions or non-product fixes.
+
 ## Example founder workflow
 
 - Monday: Review founder onboarding memo.
@@ -267,6 +272,7 @@ Use this repo with the Founder OS ecosystem if you want to connect it to adjacen
 - Use after close-won.
 - Feed onboarding risk into [founder-weekly-operating-review-agent](https://github.com/shubham1502-hue/founder-weekly-operating-review-agent).
 - Move activated accounts into [founder-retention-expansion-os](https://github.com/shubham1502-hue/founder-retention-expansion-os) for post-activation health, renewal, expansion, and proof tracking.
+- Feed onboarding blockers, activation gaps, and implementation friction into [founder-product-feedback-roadmap-os](https://github.com/shubham1502-hue/founder-product-feedback-roadmap-os) when the signal may need product, onboarding, support, or documentation decisions.
 - Feed activation or retention risks into [board-pack-investor-update-agent](https://github.com/shubham1502-hue/board-pack-investor-update-agent) when needed.
 - Use [founder-ai-workflow-roi-os](https://github.com/shubham1502-hue/founder-ai-workflow-roi-os) if onboarding workflows become repetitive or ops-heavy.
 
@@ -289,6 +295,7 @@ This repo produces:
 After:
 
 - [founder-retention-expansion-os](https://github.com/shubham1502-hue/founder-retention-expansion-os) after activation for retention risk, renewal risk, expansion readiness, churn drivers, and customer proof.
+- [founder-product-feedback-roadmap-os](https://github.com/shubham1502-hue/founder-product-feedback-roadmap-os) when onboarding signals should become roadmap decisions or non-product fixes.
 - [founder-weekly-operating-review-agent](https://github.com/shubham1502-hue/founder-weekly-operating-review-agent) for weekly leadership review.
 - [board-pack-investor-update-agent](https://github.com/shubham1502-hue/board-pack-investor-update-agent) when onboarding or activation risk needs investor narrative.
 - [founder-ai-workflow-roi-os](https://github.com/shubham1502-hue/founder-ai-workflow-roi-os) when onboarding work should be automated, piloted, hired for, outsourced, or kept manual.
