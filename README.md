@@ -19,6 +19,39 @@ make run
 open outputs/founder_onboarding_memo.md
 ```
 
+## Output preview
+
+The included sample run produces:
+
+- `outputs/founder_onboarding_memo.md`: founder-ready onboarding review
+- `outputs/onboarding_health_scorecard.csv`: account health and risk scores
+- `outputs/founder_attention_queue.csv`: customers needing founder or leadership action
+- `outputs/onboarding_sla_risks.csv`: delayed handoffs, stale touchpoints, and missed deadlines
+- `outputs/customer_activation_matrix.csv`: activation gaps and next moves
+- `outputs/onboarding_process_improvements.csv`: repeated process issues and fixes
+- `outputs/account_score_explanations.csv`: explainable account scoring
+
+## 7-day Founder's Office sprint
+
+- Day 1: Export closed-won and onboarding accounts
+- Day 2: Clean owner, stage, activation, and touchpoint fields
+- Day 3: Run the onboarding risk workflow
+- Day 4: Review founder attention and SLA risk queues
+- Day 5: Assign owners for blockers, integrations, training, payment, and migration
+- Day 6: Update CRM or customer success tracker with next actions
+- Day 7: Bring onboarding risks into the weekly operating review
+
+## Founder's Office signal
+
+This repo demonstrates:
+
+- post-sale operating discipline
+- owner and handoff clarity
+- activation risk interpretation
+- SLA and stale-touchpoint detection
+- founder escalation prioritization
+- process improvement from repeated account issues
+
 ## The founder problem
 
 Founders often know which deals closed, but not which customers are stuck after the sale. Onboarding risk hides inside handoffs, stale touchpoints, missing owners, unclear activation criteria, support tickets, integrations, training, and customer silence.
