@@ -1,0 +1,23 @@
+account_id,customer_name,segment,contract_value,current_stage,activation_status,customer_health_score,health_category,onboarding_risk_score,activation_risk_level,founder_attention_score,founder_attention_category,recommended_next_action
+ACC-020,TerraWorks Energy,Enterprise pilot,83000.0,Kickoff complete,At risk,41,At risk,62,Critical,88,Founder intervention now,Assign accountable owners before the next customer step.
+ACC-018,Riverline Logistics,Mid-market,67000.0,Technical integration,Blocked,42,At risk,62,Critical,88,Founder intervention now,Founder should contact the executive sponsor and reset the activation path.
+ACC-013,Meridian Robotics,Mid-market,95000.0,Technical integration,Blocked,44,At risk,60,Critical,88,Founder intervention now,Founder should contact the executive sponsor and reset the activation path.
+ACC-016,Prairie Foods Network,Mid-market,58000.0,Activation review,At risk,50,At risk,55,Critical,88,Founder intervention now,Founder should contact the executive sponsor and reset the activation path.
+ACC-010,Juniper BioTools,Mid-market,52000.0,Activation review,Blocked,58,At risk,44,Critical,86,Founder intervention now,Founder should contact the executive sponsor and reset the activation path.
+ACC-022,Vertex Mining Analytics,Mid-market,76000.0,Technical integration,Blocked,58,At risk,43,Critical,86,Founder intervention now,Founder should contact the executive sponsor and reset the activation path.
+ACC-004,DeltaOps Systems,Mid-market,72000.0,Technical integration,Blocked,61,Watch,40,Critical,86,Founder intervention now,Founder should contact the executive sponsor and reset the activation path.
+ACC-007,Grove Robotics,Enterprise pilot,64000.0,Activation review,At risk,70,Watch,32,Critical,86,Founder intervention now,Founder should contact the executive sponsor and reset the activation path.
+ACC-014,Northstar Legal Ops,SMB,9000.0,Data migration,Blocked,48,At risk,54,Critical,54,Owner follow-up,Create a migration checklist with source data owner and target date.
+ACC-011,Kinetic Support Labs,Startup,19000.0,Technical integration,At risk,52,At risk,51,Critical,52,Owner follow-up,Run a technical unblock session with implementation and product owner.
+ACC-017,Quartz Education Group,SMB,26000.0,Kickoff scheduled,In progress,55,At risk,45,High,52,Owner follow-up,Assign accountable owners before the next customer step.
+ACC-003,Cloudforge Labs,Startup,15000.0,Closed won,Not started,53,At risk,44,High,45,Owner follow-up,Assign accountable owners before the next customer step.
+ACC-021,UniScale Marketplaces,Startup,31000.0,Data migration,At risk,59,At risk,41,Critical,43,Owner follow-up,Create a migration checklist with source data owner and target date.
+ACC-006,Finley Finance Studio,SMB,22000.0,Kickoff complete,At risk,61,Watch,39,Critical,43,Owner follow-up,Schedule a customer touchpoint and document the next owner-backed action.
+ACC-012,Luma Retail Cloud,SMB,34000.0,Activated,Activated,74,Watch,33,Low,39,Monitor,Run usage recovery against the activation criteria.
+ACC-008,Horizon Analytics,Startup,12000.0,Training,In progress,79,Watch,20,Medium,26,Monitor,Clarify activation criteria with customer sponsor and owner.
+ACC-005,Evergreen Clinic Group,Mid-market,46000.0,Data migration,At risk,72,Watch,24,Critical,25,Monitor,Create a migration checklist with source data owner and target date.
+ACC-009,Ivory Desk Software,SMB,28000.0,Training,In progress,77,Watch,22,Medium,22,Monitor,Schedule training and confirm customer attendance.
+ACC-002,Beacon Hiring Co,SMB,18000.0,Kickoff scheduled,In progress,75,Watch,18,Low,21,Monitor,Schedule training and confirm customer attendance.
+ACC-015,OrbitAI Studio,Startup,41000.0,Expansion review,Activated,88,Healthy,15,Low,18,No action needed,Monitor account and keep activation evidence current.
+ACC-019,Summit Health AI,Startup,37000.0,Activation review,In progress,90,Healthy,8,Low,8,No action needed,Move the account to the next activation milestone this week.
+ACC-001,Acme Ledger AI,Startup,24000.0,Activated,Activated,98,Healthy,4,Low,5,No action needed,Monitor account and keep activation evidence current.

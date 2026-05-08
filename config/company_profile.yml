@@ -1,0 +1,69 @@
+company_name: "Demo Startup Customer Onboarding OS"
+stage: "Seed to Series A"
+business_model: "B2B SaaS and implementation-led services"
+onboarding_model: "Founder-reviewed customer success and implementation motion"
+analysis_date: "2026-05-08"
+target_activation_days: 30
+activation_definition: "A customer is activated when the agreed use case is live, the core workflow is used by the customer team, required integration or migration work is complete, training is complete, and the customer sponsor confirms value."
+target_segments:
+  - "Startup"
+  - "SMB"
+  - "Mid-market"
+  - "Enterprise pilot"
+high_value_threshold: 50000
+founder_intervention_threshold: 85
+onboarding_stages:
+  - "Closed won"
+  - "Handoff"
+  - "Kickoff scheduled"
+  - "Kickoff complete"
+  - "Technical integration"
+  - "Data migration"
+  - "Training"
+  - "Activation review"
+  - "Activated"
+  - "Expansion review"
+customer_health_signals:
+  - "Customer sentiment"
+  - "Usage signal"
+  - "Support ticket load"
+  - "Training completion"
+  - "Payment status"
+  - "Renewal risk signal"
+risk_signals:
+  - "Delayed onboarding start"
+  - "Missed activation deadline"
+  - "Stale customer touchpoint"
+  - "Missing owner"
+  - "Unclear next step"
+  - "Unresolved blocker"
+  - "Unpaid payment status"
+  - "Low usage after onboarding"
+  - "Training incomplete"
+  - "Integration stuck"
+  - "Data migration stuck"
+  - "High-value account at risk"
+escalation_rules:
+  onboarding_start_sla_days: 2
+  stale_touchpoint_days: 7
+  activation_warning_days: 7
+  critical_support_ticket_count: 5
+  founder_review_min_contract_value: 50000
+owner_roles:
+  onboarding_owner: "Owns customer kickoff, onboarding plan, and stage movement."
+  sales_owner: "Transfers deal context, promise history, stakeholder map, and commercial commitments."
+  customer_success_owner: "Owns adoption, sponsor relationship, and long-term health."
+  implementation_owner: "Owns technical integration, migration, and delivery dependencies."
+  founder: "Reviews high-value, blocked, or executive-risk accounts weekly."
+review_cadence:
+  weekly_review_day: "Monday"
+  founder_attention_review: "Twice weekly for critical accounts"
+  scorecard_refresh: "Weekly before the onboarding operating review"
+tools_used:
+  - "CSV"
+  - "YAML"
+  - "Python"
+  - "Markdown"
+  - "Optional Google Sheets or Notion export"
+sensitive_data_note: "Use synthetic data in public repos. Do not commit private customer data, personal data, support transcripts, contracts, credentials, or API keys."
+

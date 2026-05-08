@@ -1,0 +1,35 @@
+weights:
+  activation_progress: 14
+  days_since_close: 8
+  days_to_activation_deadline: 10
+  contract_value: 9
+  customer_sentiment: 10
+  owner_clarity: 9
+  blocker_severity: 12
+  support_ticket_load: 7
+  usage_signal: 10
+  payment_status: 7
+  integration_complexity: 8
+  data_migration_complexity: 7
+  training_completion: 7
+  renewal_risk: 9
+  founder_attention_need: 14
+health_categories:
+  healthy_min: 80
+  watch_min: 60
+  at_risk_min: 40
+  critical_below: 40
+founder_attention_categories:
+  founder_intervention_now_min: 85
+  leadership_review_this_week_min: 65
+  owner_follow_up_min: 40
+  monitor_min: 20
+scoring_notes:
+  - "Scores are deterministic and transparent."
+  - "Customer health is a 0 to 100 weighted positive score."
+  - "Onboarding risk and founder attention are 0 to 100 weighted risk scores."
+  - "Higher customer health is better."
+  - "Higher onboarding risk means greater activation risk."
+  - "Higher founder attention means the account deserves more senior review."
+  - "No LLM or paid API is required."
+

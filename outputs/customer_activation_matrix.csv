@@ -1,0 +1,23 @@
+account_id,customer_name,segment,current_stage,activation_status,usage_signal,training_completed,integration_required,data_migration_required,activation_gap,recommended_activation_move
+ACC-001,Acme Ledger AI,Startup,Activated,Activated,Healthy,Yes,No,No,Activated,Keep health evidence current.
+ACC-002,Beacon Hiring Co,SMB,Kickoff scheduled,In progress,Moderate,No,No,No,Training not complete,Schedule training and confirm attendance.
+ACC-003,Cloudforge Labs,Startup,Closed won,Not started,None,No,Yes,No,Training not complete,Schedule training and confirm attendance.
+ACC-004,DeltaOps Systems,Mid-market,Technical integration,Blocked,Low,Partial,Yes,No,Integration not complete,Run integration unblock session with technical owner.
+ACC-005,Evergreen Clinic Group,Mid-market,Data migration,At risk,Moderate,Partial,No,Yes,Data migration not complete,Confirm source data owner and migration checklist.
+ACC-006,Finley Finance Studio,SMB,Kickoff complete,At risk,Low,No,No,Yes,Training not complete,Schedule training and confirm attendance.
+ACC-007,Grove Robotics,Enterprise pilot,Activation review,At risk,Moderate,Yes,Yes,No,Customer engagement risk,Re-engage customer stakeholder and confirm priority.
+ACC-008,Horizon Analytics,Startup,Training,In progress,Moderate,Partial,No,No,Missing activation criteria,Define activation criteria with customer sponsor.
+ACC-009,Ivory Desk Software,SMB,Training,In progress,Moderate,No,No,Yes,Training not complete,Schedule training and confirm attendance.
+ACC-010,Juniper BioTools,Mid-market,Activation review,Blocked,Moderate,Yes,Yes,No,Customer engagement risk,Re-engage customer stakeholder and confirm priority.
+ACC-011,Kinetic Support Labs,Startup,Technical integration,At risk,Low,Partial,Yes,No,Integration not complete,Run integration unblock session with technical owner.
+ACC-012,Luma Retail Cloud,SMB,Activated,Activated,Low,Yes,No,Yes,Activated,Keep health evidence current.
+ACC-013,Meridian Robotics,Mid-market,Technical integration,Blocked,Low,Partial,Yes,Yes,Integration not complete,Run integration unblock session with technical owner.
+ACC-014,Northstar Legal Ops,SMB,Data migration,Blocked,None,No,Yes,Yes,Data migration not complete,Confirm source data owner and migration checklist.
+ACC-015,OrbitAI Studio,Startup,Expansion review,Activated,Growing,Yes,No,No,Activated,Keep health evidence current.
+ACC-016,Prairie Foods Network,Mid-market,Activation review,At risk,Declining,Partial,Yes,Yes,Training not complete,Schedule training and confirm attendance.
+ACC-017,Quartz Education Group,SMB,Kickoff scheduled,In progress,None,No,No,Yes,Training not complete,Schedule training and confirm attendance.
+ACC-018,Riverline Logistics,Mid-market,Technical integration,Blocked,Low,Partial,Yes,Yes,Integration not complete,Run integration unblock session with technical owner.
+ACC-019,Summit Health AI,Startup,Activation review,In progress,Healthy,Yes,No,Yes,Needs activation evidence,Document evidence that activation criteria are met.
+ACC-020,TerraWorks Energy,Enterprise pilot,Kickoff complete,At risk,None,No,Yes,Yes,Training not complete,Schedule training and confirm attendance.
+ACC-021,UniScale Marketplaces,Startup,Data migration,At risk,Moderate,Partial,No,Yes,Data migration not complete,Confirm source data owner and migration checklist.
+ACC-022,Vertex Mining Analytics,Mid-market,Technical integration,Blocked,Low,Partial,Yes,No,Training not complete,Schedule training and confirm attendance.
