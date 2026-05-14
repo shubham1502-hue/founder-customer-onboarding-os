@@ -2,6 +2,15 @@
 
 Turn closed-won customers into activated customers with onboarding health, SLA risk, founder attention queues, and weekly operating reviews.
 
+## Start here
+
+| Reader | Open first | Why | CTA |
+| --- | --- | --- | --- |
+| Founder | `outputs/founder_onboarding_memo.md` | See which closed-won customers are stuck before activation. | Pick the top founder-attention account for this week. |
+| Non-technical operator | `docs/onboarding-tracker-template.md` | Copy the tracker fields before running code. | Fill 5 to 10 customer rows in a private tracker. |
+| Technical operator | `Makefile` | See the demo, run, install, and test commands. | Run `make demo`, then inspect `outputs/founder_attention_queue.csv`. |
+| Hiring manager | `outputs/founder_attention_queue.csv` | See how blockers, owner gaps, and SLA risks become action queues. | Review the queue with the founder memo. |
+
 ## Non-technical starting point
 
 If you are a founder and want the no-code version first, start with the matching kit in:
