@@ -2,6 +2,15 @@
 
 Turn closed-won customers into activated customers with onboarding health, SLA risk, founder attention queues, and weekly operating reviews.
 
+## Non-technical starting point
+
+If you are a founder and want the no-code version first, start with the matching kit in:
+[Founder OS Adoption Kit](https://github.com/shubham1502-hue/founder-os-adoption-kit)
+
+This repo is the deeper module. The adoption kit gives you the simple template, sample input, founder prompt, and sample output.
+
+Start with the [Onboarding Risk Kit](https://github.com/shubham1502-hue/founder-os-adoption-kit/tree/main/starter-kits/onboarding-risk-kit).
+
 This helps founders prevent closed-won customers from getting stuck after the sale. Replace one CSV, edit one YAML file, run one command, and open one memo that tells you:
 
 - Which customers are stuck after closing
