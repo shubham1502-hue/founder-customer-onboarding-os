@@ -1,6 +1,10 @@
 # Founder Customer Onboarding OS
 
-Turn closed-won customers into activated customers with onboarding health, SLA risk, founder attention queues, and weekly operating reviews.
+Post-sale onboarding control tower for founders who need closed-won customers to reach activation before risk turns into churn.
+
+Use this between close-won and activation. It is not a sales repo, not a retention repo, and not a generic customer success dashboard. It focuses on the fragile handoff window where owners, blockers, integrations, training, payment, and stale touchpoints decide whether a new customer actually starts using the product.
+
+Replace one CSV, edit one YAML file, run one command, and open the founder onboarding memo.
 
 ## Start here
 
@@ -9,7 +13,16 @@ Turn closed-won customers into activated customers with onboarding health, SLA r
 | Founder | `outputs/founder_onboarding_memo.md` | See which closed-won customers are stuck before activation. | Pick the top founder-attention account for this week. |
 | Non-technical operator | `docs/onboarding-tracker-template.md` | Copy the tracker fields before running code. | Fill 5 to 10 customer rows in a private tracker. |
 | Technical operator | `Makefile` | See the demo, run, install, and test commands. | Run `make demo`, then inspect `outputs/founder_attention_queue.csv`. |
-| Hiring manager | `outputs/founder_attention_queue.csv` | See how blockers, owner gaps, and SLA risks become action queues. | Review the queue with the founder memo. |
+| Hiring manager | `outputs/founder_onboarding_memo.md` | See how post-sale risk becomes owner-backed operating action. | Review the memo, score explanations, and founder attention queue together. |
+
+## Use this instead of adjacent repos when
+
+| If the operating problem is... | Use this repo | Use the adjacent repo instead when... |
+| --- | --- | --- |
+| Closed-won customers are not reaching activation | Yes | Use `founder-led-sales-call-os` before close-won when call learning and deal rescue are the problem. |
+| Owner gaps, blockers, SLA risk, training, integration, or migration are slowing activation | Yes | Use `revops-infrastructure-playbook` if CRM fields and handoff architecture are the root issue. |
+| Activated customers need renewal, expansion, churn, or proof tracking | No | Use `founder-retention-expansion-os` after activation. |
+| Onboarding blockers should become product or documentation decisions | No | Use `founder-product-feedback-roadmap-os` for roadmap and non-product fix decisions. |
 
 ## Non-technical starting point
 
@@ -20,7 +33,7 @@ This repo is the deeper module. The adoption kit gives you the simple template, 
 
 Start with the [Onboarding Risk Kit](https://github.com/shubham1502-hue/founder-os-adoption-kit/tree/main/starter-kits/onboarding-risk-kit).
 
-This helps founders prevent closed-won customers from getting stuck after the sale. Replace one CSV, edit one YAML file, run one command, and open one memo that tells you:
+This helps founders prevent closed-won customers from getting stuck after the sale. The memo tells you:
 
 - Which customers are stuck after closing
 - Which accounts need founder attention this week
