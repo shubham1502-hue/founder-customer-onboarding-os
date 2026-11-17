@@ -10,7 +10,7 @@ import pandas as pd
 from .actions import build_founder_attention_queue
 from .risk import detect_sla_risks
 from .scoring import build_health_scorecard, build_scored_accounts
-from .utils import as_bool, clean_text, format_currency, join_names, normalize_text
+from .utils import TRUE_VALUES, as_bool, clean_text, format_currency, join_names, normalize_text
 
 
 ACTIVATION_MATRIX_COLUMNS = [
@@ -25,6 +25,9 @@ ACTIVATION_MATRIX_COLUMNS = [
     "data_migration_required",
     "activation_gap",
     "recommended_activation_move",
+    "implementation_owner",
+    "go_live_status",
+    "go_live_next_action",
 ]
 
 
@@ -70,11 +73,52 @@ def recommended_activation_move(row: pd.Series) -> str:
     return mapping.get(gap, "Move account to next activation milestone.")
 
 
+def go_live_readiness(row: pd.Series) -> tuple[str, str]:
+    """Evaluate the evidence required for an account's go-live review."""
+    if normalize_text(row.get("activation_status")) == "activated":
+        return "Already activated", "Review adoption against the activation criteria."
+
+    blocker = clean_text(row.get("blocker"))
+    if normalize_text(blocker) not in {"", "n/a", "no blocker"}:
+        return "Blocked", f"Resolve the recorded blocker: {blocker}."
+    uat_status = normalize_text(row.get("uat_status"))
+    if uat_status == "failed":
+        return "Blocked", "Resolve the failed customer acceptance test."
+
+    scope = [normalize_text(row.get(field)) for field in ("integration_required", "data_migration_required")]
+    if any(value not in TRUE_VALUES | {"no", "n", "false", "0"} for value in scope):
+        return "Evidence needed", "Confirm which integrations and migrations are in scope."
+
+    if any(as_bool(value) for value in scope):
+        if normalize_text(row.get("technical_validation_status")) == "failed":
+            return "Blocked", "Resolve the failed integration or migration check."
+        if not clean_text(row.get("implementation_owner")):
+            return "Evidence needed", "Assign the technical implementation owner."
+        if normalize_text(row.get("field_mapping_status")) != "verified":
+            return "Evidence needed", "Verify mappings with the implementation owner."
+        if normalize_text(row.get("technical_validation_status")) != "passed":
+            return "Evidence needed", "Record the integration and migration checks in scope."
+
+    if not clean_text(row.get("activation_criteria")):
+        return "Evidence needed", "Agree on the activation criteria with the customer."
+    if not clean_text(row.get("onboarding_owner")):
+        return "Evidence needed", "Assign an onboarding owner for the go-live handoff."
+    if uat_status != "signed off":
+        return "Evidence needed", "Record the customer owner's UAT sign-off."
+    if not as_bool(row.get("training_completed")):
+        return "Evidence needed", "Confirm training completion with the customer."
+
+    return "Ready for review", "Review release, exception ownership, and post-launch support with both owners."
+
+
 def build_activation_matrix(scored_accounts: pd.DataFrame) -> pd.DataFrame:
     """Build the customer activation matrix."""
     matrix = scored_accounts.copy()
     matrix["activation_gap"] = matrix.apply(activation_gap, axis=1)
     matrix["recommended_activation_move"] = matrix.apply(recommended_activation_move, axis=1)
+    readiness_columns = ["go_live_status", "go_live_next_action"]
+    readiness = [go_live_readiness(row) for _, row in matrix.iterrows()]
+    matrix[readiness_columns] = pd.DataFrame(readiness, index=matrix.index, columns=readiness_columns)
     return matrix[ACTIVATION_MATRIX_COLUMNS]
 
 

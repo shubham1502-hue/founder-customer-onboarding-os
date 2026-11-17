@@ -258,6 +258,12 @@ Required columns:
 - `renewal_risk_signal`: None, watch, budget concern, risk, churn risk, executive concern, or expansion potential
 - `notes`: Optional context
 
+## Go-live review
+
+The activation matrix checks the evidence for a go-live review separately from a customer's recorded activation status. For accounts with integration or data migration in scope, verify field mappings and record technical checks with the implementation owner. Open blockers or failed checks put the review on hold. All open accounts need activation criteria, an onboarding owner, training completion, and customer UAT sign-off.
+
+The optional columns `field_mapping_status`, `technical_validation_status`, and `uat_status` carry the evidence recorded by milestone owners. Older CSVs load without these columns. The matrix shows which evidence an open account needs to move forward. A ready row prompts a go-live review and handoff with the customer team.
+
 ## Output files
 
 Open `outputs/founder_onboarding_memo.md` first.
