@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import pandas as pd
+
 from founder_customer_onboarding.config import load_company_config, load_scoring_config
 from founder_customer_onboarding.ingest import load_accounts
 from founder_customer_onboarding.reporting import (
@@ -7,6 +9,7 @@ from founder_customer_onboarding.reporting import (
     build_founder_memo,
     build_process_improvements,
     generate_outputs,
+    go_live_readiness,
 )
 from founder_customer_onboarding.actions import build_founder_attention_queue
 from founder_customer_onboarding.risk import detect_sla_risks
@@ -57,3 +60,33 @@ def test_generate_outputs_writes_score_explanations(tmp_path):
     text = files["score_explanations"].read_text(encoding="utf-8")
     assert "score_driver_summary" in text
     assert "recommended_next_action" in text
+
+
+def test_readiness_requires_mapping_validation_and_customer_acceptance():
+    row = pd.Series({
+        "activation_status": "In progress",
+        "integration_required": "Yes",
+        "data_migration_required": "No",
+        "implementation_owner": "Implementation lead",
+        "onboarding_owner": "Onboarding lead",
+        "activation_criteria": "The operator can import and reconcile a sample order.",
+        "training_completed": "Yes",
+    })
+
+    assert go_live_readiness(row) == ("Evidence needed", "Verify mappings with the implementation owner.")
+    row["field_mapping_status"] = "Verified"
+    assert go_live_readiness(row)[0] == "Evidence needed"
+    row["technical_validation_status"] = "Failed"
+    assert go_live_readiness(row)[0] == "Blocked"
+    row["technical_validation_status"] = "Passed"
+    assert go_live_readiness(row)[1] == "Record the customer owner's UAT sign-off."
+    row["uat_status"] = "Signed off"
+    assert go_live_readiness(row)[0] == "Ready for review"
+    row["data_migration_required"] = ""
+    assert go_live_readiness(row)[0] == "Evidence needed"
+
+
+def test_readiness_keeps_prior_activation_status_and_operational_blocks():
+    assert go_live_readiness(pd.Series({"activation_status": "Activated"}))[0] == "Already activated"
+    row = pd.Series({"activation_status": "In progress", "blocker": "Warehouse mapping blocked"})
+    assert go_live_readiness(row)[0] == "Blocked"

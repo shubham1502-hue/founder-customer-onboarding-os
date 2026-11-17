@@ -38,6 +38,16 @@ Use this template when building your customer onboarding CSV.
 | renewal_risk_signal | None | None, watch, risk, churn risk, expansion potential |
 | notes | Synthetic example | Optional context |
 
+## Optional go-live evidence
+
+| Field | Values | Evidence |
+| --- | --- | --- |
+| field_mapping_status | Verified, Pending | Agreed source-to-target field map with required fields, types, and ownership |
+| technical_validation_status | Passed, Failed, Pending | Passed integration, migration, and reconciliation cases applicable to the account |
+| uat_status | Signed off, Failed, Pending | Customer acceptance against agreed tests and criteria |
+
+Record the evidence with the milestone owner. Use a representative record with required fields, a rejected record, and a retry case when validating an integration. Agree on the support owner and escalation route at the go-live review.
+
 ## Minimum viable tracker
 
 If your tracker is messy, start with these fields first:
